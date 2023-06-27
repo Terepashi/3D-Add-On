@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="2">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+  <title>Dashboard</title>
+</head>
+<body>
+  <nav class="navbar">
+      <div class="container">
+        <div>
+          <h1>3D Add On</h1>
+        <div class="menu">
+          <ul>
+            <li>
+              <a href="../user.html">Home</a>
+            </li>
+            <li>
+              <a href="#">About</a>
+            </li>
+            <li>
+              <a href="#" class="active">Projects</a>
+            </li>
+            <li>
+              <a href="#">Contact</a>
+            </li>
+            <li>
+              <a href="#">Blog</a>
+            </li>
+          </ul>
+          <ul class="options">
+            <li><a href="#">
+              <span class="material-icons">
+                search
+              </span>
+            </a></li>
+            <li><a href="#" class="notification">
+              <span class="material-icons">
+                notifications
+              </span>
+            </a></li>
+            <li><a href="#">
+              <img src="icon.png" alt="user" class="profile-img">
+            </a></li>
+          </ul>
+        </div>
+        </div> 
+        <div class="menu-btn">
+          <span class="material-icons">
+            segment
+          </span>
+        </div>
+      </div>
+    </nav>
+  <nav class="sidebar">
+    <div class="container">
+    <h3 class="title">Menu</h3>
+    <ul>
+      <li>
+       <a href="">
+        <span class="material-icons">
+          home
+        </span>
+        <span>Home</span>
+         </a>
+      </li>
+      <li>
+      <a href="../user.html">
+        <span class="material-icons">
+          favorite
+        </span>
+        <span>Favorites</span>
+        </a>
+      </li>
+      <li>
+      <a href="">
+        <span class="material-icons">
+          lock
+        </span>
+        <span>Security</span>
+         </a>
+      </li>
+      <li>
+      <a href="">
+        <span class="material-icons">
+          help
+        </span>
+        <span>Help</span>
+        </a>
+      </li>   
+      <li>
+      <a href="">
+        <span class="material-icons">
+          tune
+        </span>
+        <span>Settings</span>
+          </a>
+      </li>
+    </ul>
+    <div class="note">
+      <h1>What's New</h1>
+      <p>
+        Stay notified with the latest updates and bug fixes in this brand new version 4
+      </p>
+      <a href="#" class="btn">Learn More</a>
+    </div>
+    <div class="sidebar-footer">
+      <p>&copy; Lorem ipsum dolor</p>
+    </div>
+    </div>
+  </nav>
+  <main class="dashboard">
+    <div class="panel list">
+      <li>
+        <h2>Data(Daily)</h2>
+        <span>##</span>
+      </li>
+      <li id = "alert">
+        <h4>Alert</h4>
+        <!-- <span id =flow></span> -->
+      </li>
+      <li id = "rot">
+        <h4>Rotation</h4>
+        <!-- <span>7,093</span> -->
+      </li>
+      <li id = "cntOffPath">
+        <h4>Stored On</h4>
+        <!-- <span>3,294</span> -->
+      </li>
+      <li id = "cntOnPath">
+        <h4>Stored Off</h4>
+        <!-- <span>1,204</span> -->
+      </li>
+      <li id = "counterOffPath">
+        <h4>Counting Off</h4>
+        <!-- <span>1,204</span> -->
+      </li>
+      <li id = "counterOnPath">
+        <h4>Counting ON</h4>
+        <!-- <span>1,204</span> -->
+      </li>
+    </div>
+    
+    <div class="foto">
+      <!-- <img src="gs://esp-cam-1b487.appspot.com/UsersData/image"/> -->
+<!-- <img src = "data:image/jpeg;base64,%2F9j%2F4AAQSkZJRgABAQEAAAAAAAD%2F2wBDAAoHCAkIBgoJCAkLCwoMDxkQDw4ODx8WFxIZJCAmJiQgIyIoLToxKCs2KyIjMkQzNjs9QEFAJzBHTEY%2FSzo%2FQD7%2F2wBDAQsLCw8NDx0QEB0%2BKSMpPj4%2BPj4%2BPj4%2BPj4%2BPj4%2BPj4%2BPj4%2BPj4%2BPj4%2BPj4%2BPj4%2BPj4%2BPj4%2BPj4%2BPj4%2BPj4%2BPj7%2FxAAfAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgv%2FxAC1EAACAQMDAgQDBQUEBAAAAX0BAgMABBEFEiExQQYTUWEHInEUMoGRoQgjQrHBFVLR8CQzYnKCCQoWFxgZGiUmJygpKjQ1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4eLj5OXm5%2Bjp6vHy8%2FT19vf4%2Bfr%2FxAAfAQADAQEBAQEBAQEBAAAAAAAAAQIDBAUGBwgJCgv%2FxAC1EQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4%2BTl5ufo6ery8%2FT19vf4%2Bfr%2FwAARCAB4AKADASEAAhEBAxEB%2F9oADAMBAAIRAxEAPwCVYIx%2FAn%2FfNSiJP%2Beaf9803FGVhfKT%2B4n%2FAHzS%2BUn%2FADzT%2FvmiyCw8RJ%2FzzT%2FvmneTH%2FzzT%2FvmlZDsHkx%2F880%2F75pPJT%2Fnmn%2FfNFkOwvkp%2FwA80%2F75pPJT%2Fnmn%2FfIosgsNMMf%2FADzT%2Fvmomhj%2FAOeaf980WFZFO8hTyW%2Fdp%2F3yK85uUX%2B0G70WHEsiJf7o%2FKneWP7o%2FKjlSGxpQf3R%2BVNMY9B%2BVFhDDGP7oppQelCQz1TFOFUSLS0hkgFPxQAYoxSGOxxTMUAIVqNloAoX4%2F0dvpXnDfNqD%2FWqAt4opDGtUdMQxqjNAj1SnigQ7FOpDHgVIBQMXFAFIYpFN20gFK1Ey0AZ%2Boj%2FAEdq80HN%2FJ9aYi7ilxTGRkUwiiwupGwqMimB6nThQSSCnipKJFFSAUAO203FIYU4LSGBFRMKYjN1Ti1f6V5pCM3kn1pgi8KQ0DZGajpkkbUw0wPUaetDESgVIBSGSKKlUUhkmKYVpDG7alC8VICFaicUxGVq%2FwDx5v8ASvNbQZuXPvT6DRexzSsKYELComFBJFTGpgeod6kWgRMtSgUDJAKlUUhjwKdtqRiBadikA2onFAGNrf8Ax4yfSvN9P%2B%2B596YI0MUhqgIWqF6LiIiKiNMVj1DnP3m%2FOpU3f3m%2FOlYCdN394%2FnUy5%2FvGiwDxn1NSLn1NTYolXPqafz6mpsFxefU0HPqaVgIjn1NRvn1NOwXMPX2ZdOlIdgcdjXnOmGUoT59x%2F39NHJoFy9%2B8%2F57z%2F8Af00hMn%2FPef8A7%2BGkqYcxG%2FmEf8fE%2FwD38NQMZP8AntP%2FAN%2FDVcocxAxf%2FnvP%2FwB%2FTTGMn%2FPef%2Fv4afILmPU8U9a0JJ1qZakZIKetIZKtSCkMdTTUgRGonoAwPEn%2FACDJf92uB01f3VV0Au4pClAEDCoGFMTIGXmoyKYj1WnCqETrUy1IySnigZKDUgqRjqYxpAR5qF6QHO%2BKTjSpv92uI04fuKvoItd6M0DIHFQtTEQNUTUxHqlApsRMhqdTSGSg04UhjwakBqBj81VuJMUgEjbNNkNAHM%2BLW%2F4lUv0rkbL%2FAI9hVdARYHWkagCBqhc0xFdqjNMD1SgVRI9TU6mpGSg07NA0PBqQGpGOzxVOVstUsB6nAqKRqYHM%2BLm%2F4lbiuWtuIRTAnpjGgCI1E1UIgeojTA9SzS02QOFSqakolBp%2BaAHA0%2FdSGKX4qv8AxVIx2eKgkagRyvjB%2FwDQse9c%2FAf3S1Q0TbuKgY80xDGNRM1AELGo80CPUc0tUSOBqUGkMkBp%2BaQxQ1O3Uhhupm6kA1mqvI1IDlfFpzaKP9oViR%2F6sVQIdmmmgCJqiamIiaozQB6cDTs1TJHZp4akBIGp%2B6kMXdS7qBjd1N30hjGeoHagRy%2FipsxIPeslP9WKYwzTSaAIWqNqBERphoA9LzTwaskWlzSAkVqk3UgDdRupFDd1M30ANZ6hdqBHLeJmz5f1rPB4pjQhNMJpCI81GaBkRNNNAj%2F%2F2QAA"/> -->
+    <!-- <span id="image"></span> -->
+    <img src="https://firebasestorage.googleapis.com/v0/b/esp-cam-1b487.appspot.com/o/UsersData%2Fimage?alt=media&token=106f04c7-70ae-486d-874b-10ee231ad33d" height="398" width="425"/>
+    
+  </div>
+    
+    
+    <div class="goals">
+      <div class="panel goal">
+        <span class="material-icons">
+          check_circle
+        </span>
+        <div>
+          <div class="goal-title">
+            <h4>Temperature</h4>
+            <h4>220˚</h4>
+          </div>
+        <small>Normal</small>  
+        </div>
+      </div>
+      <div class="panel goal">
+        <span class="material-icons">
+          check_circle
+        </span>
+        <div>
+          <div class="goal-title">
+            <h4>Filament</h4>
+            <h4>97.9%</h4>
+          </div>
+        <small>Ready</small>  
+        </div>
+      </div>
+      <div class="panel goal">
+        <span class="material-icons">
+          check_circle
+        </span>
+        <div>
+          <div class="goal-title">
+            <h4>ESP32</h4>
+            <h4>On</h4>
+          </div>
+        <small>Ready</small>  
+        </div>
+      </div>
+
+    <!-- <input type ="reset" value = "Reset" id="reset"> -->
+    </div>
+
+
+    <div id="barChart"></div>
+    
+    <div id="scientificChart"></div>
+    <!-- <canvas id="myChart" style="width:500%;max-width:1000px"></canvas> -->
+    <!-- <div id="barChart"></div> -->
+    
+    
+    <div class="sales">
+      <div>
+        <h4>Failure Detected</h4>
+        <h1 id = "Fail_Det">1</h1>
+        <small>normal</small>
+      </div>
+      <div>
+        <h4>Flow</h4>
+        <h1>1rad/s</h1>
+        <small>normal</small>
+      </div>
+      <div>
+        <h4>Length</h4>
+        <h1>20m</h1>
+        <small>normal</small>
+      </div>
+      <div>
+        <h4>Status</h4>
+        <h1>Bad</h1>
+        <small>for 1 hour</small>
+      </div>
+    </div>
+    
+    <div id="pieChart" display ="null"></div>
+    
+    <div class="panel list">
+      <li>
+        <h2>Month</h2>
+        <span>Failure Rate</span>
+      </li>
+      <li>
+        <h4>January</h4>
+        <span>2%</span>
+      </li>
+      <li>
+        <h4>February</h4>
+        <span>1.33%</span>
+      </li>
+      <li>
+        <h4>March</h4>
+        <span>2%</span>
+      </li>
+      <li>
+        <h4>April</h4>
+        <span>1.5%</span>
+      </li>
+    </div>
+    
+    <div class="panel text text-vertical">
+      <h1>Details</h1>
+      <small>lorem ipsum</small>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pellentesque suscipit tortor ac tempor. Ut consectetur hendrerit felis, luctus volutpat odio mollis eget.</p>
+      <p>Sed metus mi, tincidunt non odio eget, aliquet tristique ipsum. Mauris non est in quam bibendum molestie vitae at lacus. Nullam non bibendum nunc. Suspendisse id tellus non ipsum consectetur rutrum. Quisque nec pellentesque lacus, et rutrum nulla.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pellentesque suscipit tortor ac tempor. Ut consectetur hendrerit felis, luctus volutpat odio mollis eget.</p>
+      <p>Sed metus mi, tincidunt non odio eget, aliquet tristique ipsum. Mauris non est in quam bibendum molestie vitae at lacus. Nullam non bibendum nunc. Suspendisse id tellus non ipsum consectetur rutrum. Quisque nec pellentesque lacus, et rutrum nulla.</p>
+    </div>
+    
+     <div class="panel text text-horizontal">
+      <h1>Updates</h1>
+      <small>lorem ipsum</small>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pellentesque suscipit tortor ac tempor. Ut consectetur hendrerit felis, luctus volutpat odio mollis eget.</p>
+      <p>Sed metus mi, tincidunt non odio eget, aliquet tristique ipsum. Mauris non est in quam bibendum molestie vitae at lacus. Nullam non bibendum nunc. Suspendisse id tellus non ipsum consectetur rutrum. Quisque nec pellentesque lacus, et rutrum nulla.</p>
+    </div>
+    
+    <div id="carpetChart"></div>
+    
+    <div class="goals">
+      <div class="panel goal">
+        <span class="material-icons">
+          fingerprint
+        </span>
+        <div>
+          <div class="goal-title">
+            <h4>Privacy</h4>
+          </div>
+        <small>Lorem ipsum dolor sit amet</small>  
+        </div>
+      </div>
+      <div class="panel goal">
+        <span class="material-icons">
+          dashboard
+        </span>
+        <div>
+          <div class="goal-title">
+            <h4>Dashboard</h4>
+          </div>
+        <small>Lorem ipsum dolor sit amet</small>  
+        </div>
+      </div>
+      <div class="panel goal">
+        <span class="material-icons">
+          manage_accounts
+        </span>
+        <div>
+          <div class="goal-title">
+            <h4>Manage</h4>
+          </div>
+        <small>Lorem ipsum dolor sit amet</small>  
+        </div>
+      </div>
+    </div>
+    
+    <div id="donutChart"></div>
+  </main>
+  
+  <script src='https://cdn.plot.ly/plotly-2.4.2.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js'></script>
+  <script src="main.js"></script>
+  
+  <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="dashboard.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+    import { getDatabase, set, ref ,push, child, onValue} from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+    // import { getStorage, ref } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-storage.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBVQcLbOlwnloA21Z61rvbBC4AZtxulAaE",
+      authDomain: "esp-cam-1b487.firebaseapp.com",
+      databaseURL: "https://esp-cam-1b487-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "esp-cam-1b487",
+      storageBucket: "esp-cam-1b487.appspot.com",
+      messagingSenderId: "370397575421",
+      appId: "1:370397575421:web:9b0da64140cc2608b72694"
+    };
+
+
+
+
+     // Initialize Firebase
+  
+     const app = initializeApp(firebaseConfig);
+
+     const database = getDatabase(app);
+
+
+    //  database.ref('data/').on('value', function(snapshot) {
+    //     var imageUrl = snapshot.val();
+    //     document.getElementById('img').src = Img;
+  // });
+    
+
+
+   
+
+     const dbRef = ref(database, 'UsersData/');
+      // const storageRef = ref(storage, 'UsersData/');
+
+      // var image = 'gs://esp-cam-1b487.appspot.com/UsersData/image';
+
+      // document.querySelector('img').src = image;
+
+//       var storage = firebase.storage();
+//       var storageRef = storage.ref();
+//       //urll is the url for image
+//       storageRef.child('gs://esp-cam-1b487.appspot.com/UsersData/image').getDownloadURL().then(function(url) {
+//         // Or inserted into an <img> element:
+//         var image = document.getElementById('image');
+//         img.src = url;
+//       }).catch(function(error) {
+//         // Handle any errors
+// });
+ 
+     onValue(dbRef, (snapshot) => {
+        snapshot.forEach((childSnapshot) => {
+          const childData = childSnapshot.val();
+          // ...
+          var alert =  "<span>" + childData.alert + "</span>";
+          var cntOffPath =  "<span>" + childData.cntOffPath + "</span>";
+          var cntOnPath =  "<span>" + childData.cntOnPath + "</span>";
+          var counterOffPath =  "<span>" + childData.counterOffPath + "</span>";
+          var counterOnPath =  "<span>" + childData.counterOnPath + "</span>";
+          var rot =  "<span>" + childData.rot + "</span>";
+        //  var image = "<img src=\"" + childData.image + "\">";
+          // var img = snapshot.val();
+          // document.getElementById('img').src = Img;
+          // //event.target.src = childData.Img
+
+          $(alert).appendTo('#alert');
+          $(cntOffPath).appendTo('#cntOffPath');
+          $(cntOnPath).appendTo('#cntOnPath');
+          $(counterOffPath).appendTo('#counterOffPath');
+          $(counterOnPath).appendTo('#counterOnPath');
+          $(rot).appendTo('#rot');
+          //  $(image).appendTo('#image');
+        });
+      }, 
+      {
+        onlyOnce: true
+      });
+
+      /* Current script */
+
+
+    function calculate(){
+      var num1 = Number(document.getElementById("rot").value);
+      //var num2 = Number(document.getElementById("num2").value);
+      //var result = (100 - rot) * 100%;
+      document.getElementById("result").innerHTML = result;
+    }
+    // if (previousReading === currentReading) {
+    //     totalRotationAvailable -= 1;
+    //   }
+
+    //   console.log(totalRotationAvailable);
+
+    //   function reset() {
+    //     totalRotationAvailable = 30;
+    //   }
+
+// var pat = document.getElementById("Filament");
+// var rot = document.getElementById("rot") ; // max number of intervals
+
+
+
+// for (var n = 1; n <= rot; ++n) {
+     //if (n != nMax)
+        // insert comma and space after each interval
+    	// pat.innerHTML = 100 - rot ;
+     //else
+        // append ellipsis after last interval
+       // pat.innerHTML += (n * (n + 1)) / 2 + ",&hellip;";
+ //}
+
+      // <script src="jquery-1.9.0.min.js">
+      //   $(document).ready(function() {
+      //     $('#rot').load(load.php);
+      //     refresh();
+      //   });
+
+
+
+
+
+        
+      // function AutoRefresh(t){
+      //   setTimeout("location.reload(true);", t);
+      //   document.getElementById("alert");
+      //   document.getElementById("cntOffPath");
+      //   document.getElementById("cntOnPath");
+      //   document.getElementById("counterOffPath");
+      //   document.getElementById("counterOnPath");
+      //   document.getElementById("rot");
+        
+      // }
+    
+</script>
+
+</body>
+</html>
